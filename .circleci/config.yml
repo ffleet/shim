@@ -61,11 +61,12 @@ jobs:
 
 workflows:
   version: 2
-  test:
+  build-and-test:
     jobs:
       - build
       - test
-
+          requires:
+            - build
 #  deploy:
 #    jobs:
 #      - deploy:
