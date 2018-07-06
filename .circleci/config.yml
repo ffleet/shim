@@ -52,7 +52,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
 
-      - run: echo "deploy"
+      - run: echo "//registry.npmjs.org/:_authToken=$TOKEN" > ~/repo/.npmrc
+
+      - run: npm publish
 
 workflows:
   version: 2
