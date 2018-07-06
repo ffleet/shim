@@ -1,6 +1,6 @@
 # Serverless Shim
 
-![CircleCI](https://img.shields.io/circleci/project/github/ffleet/shim-js.svg)
+[![CircleCI](https://img.shields.io/circleci/project/github/ffleet/shim-js.svg)](#readme)
 [![npm](https://img.shields.io/npm/v/@ffleet/shim.svg)](https://www.npmjs.com/package/@ffleet/shim)
 
 AWS Lambda Node.js Shim Library
