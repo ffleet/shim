@@ -27,14 +27,12 @@
   },
   "homepage": "https://github.com/ffleet/shim-js#readme",
   "devDependencies": {
+    "aws-serverless-express": "^3.2.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "jest": "^23.3.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
-  },
-  "dependencies": {
-    "aws-serverless-express": "^3.2.0"
   }
 }
