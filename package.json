@@ -1,11 +1,14 @@
 {
   "name": "@ffleet/shim",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "AWS Lambda Node.js Shim",
   "main": "lib/index.js",
   "directories": {
     "test": "test"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "webpack",
     "test": "jest"
