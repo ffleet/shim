@@ -1,0 +1,40 @@
+{
+  "name": "shim",
+  "version": "0.10.0",
+  "description": "AWS Lambda Node.js Shim",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ffleet/shim-js.git"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda",
+    "ffleet"
+  ],
+  "author": "Matt Curcio <matt@ffleet.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ffleet/shim-js/issues"
+  },
+  "homepage": "https://github.com/ffleet/shim-js#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.3.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "aws-serverless-express": "^3.2.0"
+  }
+}
