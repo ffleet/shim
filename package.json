@@ -1,6 +1,6 @@
 {
   "name": "@ffleet/shim",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "AWS Lambda Node.js Shim",
   "main": "lib/index.js",
   "directories": {
@@ -19,6 +19,9 @@
     "aws",
     "lambda",
     "ffleet"
+  ],
+  "files": [
+    "libs"
   ],
   "author": "Matt Curcio <matt@ffleet.io>",
   "license": "MIT",
