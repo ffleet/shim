@@ -3,7 +3,9 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/ffleet/shim-js.svg)](#readme)
 [![npm](https://img.shields.io/npm/v/@ffleet/shim.svg)](https://www.npmjs.com/package/@ffleet/shim)
 
-This library provides an abstraction between the AWS Lambda events and classic node.js calling conventions. This project is sponsored by the Functional Fleet [Serverless Platform](https://ffleet.io).
+This library provides an abstraction between the AWS Lambda events and classic node.js calling conventions.
+
+This project is sponsored by the Functional Fleet [Serverless Platform](https://ffleet.io).
 
 ## Why
 
@@ -57,7 +59,8 @@ Example:
 const shim = require('@ffleet/shim');
 
 function myCron(timestamp) {
-	doSomething(timestamp);
+	const date = new Date(timestamp);
+	doSomething(date);
 }
 
 exports.myCron = shim.cron(myCron);
