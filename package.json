@@ -1,6 +1,6 @@
 {
   "name": "@ffleet/shim",
-  "version": "1.2.6",
+  "version": "1.3.0",
   "description": "AWS Lambda Node.js Shim",
   "main": "lib/index.js",
   "directories": {
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "webpack",
-    "test": "jest"
+    "test": "webpack && jest"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "is-promise": "^2.1.0",
     "jest": "^23.3.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"

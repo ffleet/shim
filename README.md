@@ -18,6 +18,28 @@ This library supports all versions of node.js that are currently supported by AW
 * node.js 6.10
 * node.js 8.10
 
+## Wrap
+
+Wrapping your function standardizes the calling conventions across all versions of Node.js and all AWS Lambda event sources. This includes:
+
+* Supporting Promise returns, rather than the callback argument
+* Standardizing arguments to `(event, callback)`
+* Providing additional helpers through the `this` object
+
+Example:
+```js
+var shim = require('@ffleet/shim');
+var myLib = require('./lib');
+
+// callback is not needed with Promise
+function mySQSHandler(event) {
+	// myLib.handle returns a promise
+	return myLib.handle(event);
+}
+
+exports.mySQSHandler = shim.wrap(mySQSHandler);
+```
+
 ## Libraries
 
 ### HTTP
@@ -37,7 +59,7 @@ function myNativeHttpHandler(req, res) {
 exports.myNativeHttpHandler = shim.http(myNativeHttpHandler);
 ```
 
-Or, you can wrap an entire server:
+Or, you can wrap an entire Express server:
 ```js
 const shim = require('@ffleet/shim');
 const express = require('express');
@@ -48,20 +70,4 @@ app.get('/', function(req, res, next) {
 });
 
 exports.myExpressHttpHandler = shim.http(app);
-```
-
-### Cron
-
-The cron shim provides a simply interface to the wrapped function: the time of the cron target event as a ISO 6801 string. For example: `2018-07-09T14:56:01Z`.
-
-Example:
-```js
-const shim = require('@ffleet/shim');
-
-function myCron(timestamp) {
-	const date = new Date(timestamp);
-	doSomething(date);
-}
-
-exports.myCron = shim.cron(myCron);
 ```
