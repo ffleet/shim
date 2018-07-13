@@ -1,6 +1,6 @@
 # AWS Lambda Shim
 
-[![CircleCI](https://img.shields.io/circleci/project/github/ffleet/shim-js.svg)](#readme)
+[![CircleCI](https://img.shields.io/circleci/project/github/ffleet/shim.svg)](#readme)
 [![npm](https://img.shields.io/npm/v/@ffleet/shim.svg)](https://www.npmjs.com/package/@ffleet/shim)
 
 This library provides an abstraction between the AWS Lambda events and classic node.js calling conventions.
