@@ -27,11 +27,15 @@ function wrap(fn) {
 		const newContext = {
 			event,
 			context,
-			callback
 		};
 
-		// if handler is synchronous, exceptions will bubble up
-		const result = fn.call(newContext, event, callback);
+		let result;
+		try {
+			result = fn.call(newContext, event, callback);
+		} catch (err) {
+			callback(err);
+			return;
+		}
 
 		// if the handler returned a promise, or is async
 		if (isPromise(result)) {
@@ -79,3 +83,24 @@ function http(handler) {
 	};
 }
 exports.http = shimmer(http);
+
+function cron(handler) {
+	return wrap((event, callback) => handler(new Date(Date.parse(event.time)), callback));
+}
+exports.cron = shimmer(cron);
+
+function logs(handler) {
+	const zlib = require('zlib');
+
+	return wrap((event, callback) => {
+		const buffer = new Buffer(event.awslogs.data, 'base64');
+		zlib.gunzip(buffer, (err, decoded) => {
+			if (err) return callback(err);
+
+			const obj = JSON.parse(decoded);
+
+			return handler(obj, callback);
+		})
+	});
+}
+exports.logs = shimmer(logs);
