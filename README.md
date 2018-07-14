@@ -3,13 +3,17 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/ffleet/shim.svg)](#readme)
 [![npm](https://img.shields.io/npm/v/@ffleet/shim.svg)](https://www.npmjs.com/package/@ffleet/shim)
 
+> A Better Lambda API
+
 This library provides an abstraction between the AWS Lambda events and classic node.js calling conventions.
 
-This project is sponsored by the Functional Fleet [Serverless Platform](https://ffleet.io).
+This project is sponsored by the Functional Fleet [Serverless Platform](https://ffleet.io). We are currently accepting beta users for our platform, featuring a free git repo, hosted deploy queue, and centralized monitoring.
 
 ## Why
 
-Node.js has developed a familiar set of patterns for certain sets of problems. AWS Lambda, however, uses a slightly different structure in order to maximize flexibility for the Lambda platform. This library bridges the gap, allowing you to write common node.js style code which is automatically translated for use in AWS serverless environments.
+Node.js has developed a familiar set of patterns for certain sets of problems. AWS Lambda, however, uses a slightly different structure in order to maximize flexibility for the Lambda platform.
+
+This library bridges the gap, allowing you to write node.js style code which is automatically translated for use in AWS serverless environments.
 
 ## Support
 
