@@ -11,16 +11,7 @@ This project is sponsored by the Functional Fleet [Serverless Platform](https://
 
 ## Why
 
-Node.js has developed a familiar set of patterns for certain sets of problems. AWS Lambda, however, uses a slightly different structure in order to maximize flexibility for the Lambda platform.
-
-This library bridges the gap, allowing you to write node.js style code which is automatically translated for use in AWS serverless environments.
-
-## Support
-
-This library supports all versions of node.js that are currently supported by AWS Lambda. Currently, that includes:
-* node.js 4.3
-* node.js 6.10
-* node.js 8.10
+AWS Lambda has a somewhat unintuitive API structure that is sometimes inconsistent with node.js standards. This library bridges the gap, allowing you to write more familiar node.js style code.
 
 ## Wrap
 
@@ -36,15 +27,17 @@ var shim = require('@ffleet/shim');
 var myLib = require('./lib');
 
 // callback is not needed with Promise
-function mySQSHandler(event) {
+function myHandler(event) {
 	// myLib.handle returns a promise
 	return myLib.handle(event);
 }
 
-exports.mySQSHandler = shim.wrap(mySQSHandler);
+exports.myHandler = shim.wrap(myHandler);
 ```
 
 ## Libraries
+
+The specific API shims below provide context specific APIs for certain Lambda events.
 
 ### HTTP
 
@@ -74,4 +67,50 @@ app.get('/', function(req, res, next) {
 });
 
 exports.myExpressHttpHandler = shim.http(app);
+```
+
+### Cron
+
+Cron functions are executed by AWS CloudWatch Events. Wrapping with the `cron` shim unpacks the event data and provides a `Date` object of when the cron event was generated.
+
+```js
+const shim = require('@ffleet/shim');
+
+function myCron(date, callback) {
+	console.log('cron event generated at ' + date.toISOString());
+}
+exports.myCron = shim.cron(myCron);
+```
+
+### Logs
+
+AWS CloudWatch Log data is provided in a base64 encoded and gzip packed data string. The `logs` shim will decode the log data and reconstitute the represented JSON object, as:
+
+```json
+{
+	"messageType": "DATA_MESSAGE",
+	"owner": "123456789123",
+	"logGroup": "testLogGroup",
+	"logStream": "testLogStream",
+	"subscriptionFilters": ["testFilter"],
+	"logEvents": [{
+		"id": "eventId1",
+		"timestamp": 1440442987000,
+		"message": "[ERROR] First test message"
+	}, {
+		"id": "eventId2",
+		"timestamp": 1440442987001,
+		"message": "[ERROR] Second test message"
+	}]
+}
+```
+
+Example:
+```js
+const shim = require('@ffleet/shim');
+
+function myLogHandler(logObject, callback) {
+	logObject.logEvents.forEach(logEvent => console.log('log', logEvent));
+}
+exports.myLogHandler = shim.logs(myLogHandler);
 ```

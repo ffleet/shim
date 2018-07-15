@@ -14,10 +14,6 @@ module.exports = (env = {}) => {
       filename: '[name].js',
       libraryTarget: 'commonjs2'
     },
-    externals: {
-      http: { commonjs2: 'http' },
-      crypto: { commonjs2: 'crypto' }
-    },
     target: 'node',
     node: {
       Buffer: false,
