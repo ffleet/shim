@@ -17,7 +17,7 @@ AWS Lambda has a somewhat unintuitive API structure that is sometimes inconsiste
 
 Wrapping your function standardizes the calling conventions across all versions of Node.js and all AWS Lambda event sources. This includes:
 
-* Supporting Promise returns, rather than the callback argument
+* Supporting `Promise` returns, rather than the callback argument
 * Standardizing arguments to `(event, callback)`
 * Providing additional helpers through the `this` object
 
