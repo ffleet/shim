@@ -50,25 +50,7 @@ function wrap(fn) {
 exports.wrap = shimmer(wrap);
 
 function http(handler) {
-	const binaryMimeTypes = [
-		'application/javascript',
-		'application/json',
-		'application/octet-stream',
-		'application/xml',
-		'font/eot',
-		'font/opentype',
-		'font/otf',
-		'image/jpeg',
-		'image/png',
-		'image/svg+xml',
-		'text/comma-separated-values',
-		'text/css',
-		'text/html',
-		'text/javascript',
-		'text/plain',
-		'text/text',
-		'text/xml'
-	];
+	const binaryMimeTypes = [];
 
 	const awsExpress = require('aws-serverless-express');
 	const crypto = require('crypto');

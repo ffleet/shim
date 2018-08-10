@@ -1,6 +1,6 @@
 {
   "name": "@ffleet/shim",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "AWS Lambda Node.js Shim",
   "main": "lib/index.js",
   "directories": {

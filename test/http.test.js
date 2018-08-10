@@ -52,7 +52,7 @@ describe('http', () => {
 		return run(handler, event)
 			.then(res => {
 				expect(res.statusCode).toEqual(200);
-				expect(atob(res.body)).toEqual("Hello, World!");
+				expect(res.body).toEqual("Hello, World!");
 			});
 	});
 
@@ -80,7 +80,7 @@ describe('http', () => {
 
 		return run(handler, event)
 			.then(res => {
-				expect(atob(res.body)).toEqual('Hello, World!');
+				expect(res.body).toEqual('Hello, World!');
 			});
 	});
 });
